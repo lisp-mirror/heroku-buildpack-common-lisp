@@ -6,9 +6,9 @@
   (defvar *cache-dir* (env-to-dirs "CACHE_DIR"))
   (defvar *buildpack-dir* (env-to-dirs "BUILDPACK_DIR")))
 
-(format t "~&*build-dir* = ~a" *build-dir*)
-(format t "~&*cache-dir* = ~a" *cache-dir*)
-(format t "~&*buildpack-dir* = ~a" *buildpack-dir*)
+(format t "~&  *build-dir* = ~a" (make-pathname :directory *build-dir*))
+(format t "~&  *cache-dir* = ~a" (make-pathname :directory *cache-dir*))
+(format t "~&  *buildpack-dir* = ~a" (make-pathname :directory *buildpack-dir*))
 
 ;;; Tell ASDF to store binaries in the cache dir.
 (ccl:setenv "XDG_CACHE_HOME" (concatenate 'string (getenv "CACHE_DIR") "/.asdf/"))
@@ -44,13 +44,13 @@
 (defvar *root* "/app")			;this is always the app root on Heroku now?
 
 ;;; Run the app's own build.
-(format t "~2&* Load application's heroku-compile.lisp ")
+(format t "~&* Load application's heroku-compile.lisp ")
 (load (make-pathname :directory *build-dir* :defaults "heroku-compile.lisp"))
 
 ;;; Save the application as an image
 (let ((app-file (make-pathname :directory *build-dir* :defaults "lispapp")))
   ;; note that the buildpack's bin/release refers to this application name.
-  (format t "~2&* save-application to create slug's lispapp, i.e. ~A" app-file)
+  (format t "~&* create slug's ./lispapp via save-application")
   (save-application app-file
 		    :prepend-kernel t
 		    :toplevel-function #'heroku-toplevel))
