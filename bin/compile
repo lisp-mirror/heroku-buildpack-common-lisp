@@ -1,12 +1,6 @@
 #!/usr/bin/env bash
 # bin/compile <build-dir> <cache-dir>
 
-mktmpdir() {
-  dir=$(mktemp -t node-$1-XXXX)
-  rm -rf $dir
-  mkdir -p $dir
-  echo $dir
-}
 function indent() {
   c='s/^/       /'
   case $(uname) in
@@ -14,17 +8,21 @@ function indent() {
     *)      sed -u "$c";;
   esac
 }
+function echo_indent {
+    echo "$*" | indent
+}
 
-# 
-S3_BUCKET="cl-heroku"
-CCL_PACKAGE="http://${S3_BUCKET}.s3.amazonaws.com/ccl-1.7.tgz"
+# A kind person is hosting a ccl install for us.
+CCL_PACKAGE="http://cl-heroku.s3.amazonaws.com/ccl-1.7.tgz"
 
 # parse and derive params
 BUILDPACK_DIR=$(cd $(dirname $0); cd ..; pwd) # absolute path of buildpack
 BUILD_DIR=$1
 CACHE_DIR=$2
 
-echo "-----> compile params: $BUILD_DIR $CACHE_DIR"
+echo "-----> start buildpack's compile
+echo_indent "build_dir: $BUILD_DIR"
+echo_indent "cache_dir: $CACHE_DIR"
 
 if [ $RESET_CACHE ]; then
   echo "-----> flushing cache"
@@ -33,27 +31,27 @@ fi
 
 CCL_DIR="$CACHE_DIR/ccl"
 
-echo "-----> Installing ccl"
 if [ ! -d $CCL_DIR ]; then
-    echo "-----> Fetching ccl"
+    echo "-----> Installing ccl"
     mkdir -p $CCL_DIR  && curl $CCL_PACKAGE -s -o -  | tar xzf - -C $CCL_DIR
+    echo_indent 'ccl now installed'
+else
+    echo "-----> ccl previously installed"
 fi
 
-# add to slug 
-cp -r $CCL_DIR $BUILD_DIR
+#### Disabled
+#### echo "-----> including ccl into the app's slug"
+#### cp -r $CCL_DIR $BUILD_DIR
 
-echo "ccl installed" | indent
-
-# setting up paths for building
-
+echo "-----> create slug's lispapp"
 export BUILDPACK_DIR
 export CACHE_DIR
 export BUILD_DIR
 export CCL_DEFAULT_DIRECTORY=$CCL_DIR
+echo_indent 'using the buildpack's setup/compile.lisp, asdf, quicklisp, and save-application'
 
-echo "-----> Starting build"
-$CCL_DEFAULT_DIRECTORY/scripts/ccl64 -l "$BUILDPACK_DIR/setup/compile.lisp"
+
+$CCL_DEFAULT_DIRECTORY/scripts/ccl64 -l "$BUILDPACK_DIR/setup/compile.lisp" | indent
 echo "-----> Build finished"
 
 chmod a+x $BUILD_DIR/lispapp
-
