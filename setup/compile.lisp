@@ -28,7 +28,7 @@
 
 ;;; Notify ASDF that our build and cache dir is an awesomes place to find asf files.
 (asdf:initialize-source-registry `(:source-registry
-                                   (:tree ,(make-pathname :directory *buildpack-dir*))
+                                   (:tree ,(make-pathname :directory *build-dir*))
                                    (:tree ,(make-pathname :directory *cache-dir*))
                                    :inherit-configuration))
 
