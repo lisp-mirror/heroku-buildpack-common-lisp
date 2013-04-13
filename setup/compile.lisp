@@ -30,7 +30,7 @@
 (asdf:initialize-source-registry `(:source-registry
                                    (:tree ,(make-pathname :directory *buildpack-dir*))
                                    (:tree ,(make-pathname :directory *cache-dir*))
-                                   :default-registry))
+                                   :inherit-configuration))
 
 ;;; App can redefine this to do runtime initializations
 (defun initialize-application (&key port)
