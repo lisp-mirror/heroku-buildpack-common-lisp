@@ -44,7 +44,7 @@
 (defvar *root* "/app")			;this is always the app root on Heroku now?
 
 ;;; Run the app's own build.
-(format t "~2&* Load application's heroku-compile.lisp " app-file)
+(format t "~2&* Load application's heroku-compile.lisp ")
 (load (make-pathname :directory *build-dir* :defaults "heroku-compile.lisp"))
 
 ;;; Save the application as an image
