@@ -27,10 +27,10 @@
   (load ql-setup))
 
 ;;; Notify ASDF that our build and cache dir is an awesomes place to find asf files.
-(initialize-source-registry `(:source-registry
-                              (:tree ,(make-pathname :directory *buildpack-dir*))
-                              (:tree ,(make-pathname :directory *cache-dir*))
-                              :default-registry))
+(asdf:initialize-source-registry `(:source-registry
+                                   (:tree ,(make-pathname :directory *buildpack-dir*))
+                                   (:tree ,(make-pathname :directory *cache-dir*))
+                                   :default-registry))
 
 ;;; App can redefine this to do runtime initializations
 (defun initialize-application (&key port)
