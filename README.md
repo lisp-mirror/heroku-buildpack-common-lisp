@@ -14,8 +14,9 @@ typically do little more use quickload to (re)compile your
 application.  The buildpack then dumps an executable (./lispapp),
 and executable goes into the slug along with all your sources.
 
-An example application using this buildpack can be found here:
-<tbd>.
+An [example application](https://github.com/bhyde/heroku-buildpack-ccl64-example1#readme)
+using this buildpack can be found here: https://github.com/bhyde/heroku-buildpack-ccl64-example1#readme
+
 
 This buildpack is decendant from Mike Traver's heroku-buildpack-cl2,
 which in turn is decendant from ??? Fork of Mike's original
@@ -44,15 +45,14 @@ recompilation will hapen at start time of your application.
 With ASDF output translations disabled the .fasl files are placed near
 the sources, and when copied together, ASDF still matches them.
 
-See the [example application](https://github.com/avodonosov/heroku-cl-example2). 
 
 ## Notes
 * Heroku does not have a persistent file system. Applications should use S3 for storage; [ZS3](http://www.xach.com/lisp/zs3) is a useful CL library for doing that.
-* You can login into the server where your application is deployed and inspect it with `heroku run bash` command. See [one off dynos] (https://devcenter.heroku.com/articles/one-off-dynos).
+* There are more notes in the [example application](https://github.com/bhyde/heroku-buildpack-ccl64-example1#readme).
 
 ## Credits
 * [Mike Travers](hyperphor.com) for heroku-buildpack-cl2
-* [Anton Vodonosov] for his fork of heroku-buildpack-cl
+* [Anton Vodonosov](https://github.com/avodonosov) for his fork of heroku-buildpack-cl
 * [Mike Travers](hyperphor.com) for heroku-buildpack-cl
 * Heroku and their new [Buildpack-capable stack](http://devcenter.heroku.com/articles/buildpacks)
 * [QuickLisp](http://www.quicklisp.org/) library manager 
