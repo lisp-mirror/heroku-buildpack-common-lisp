@@ -52,8 +52,8 @@ export BUILDPACK_DIR
 export CACHE_DIR
 export BUILD_DIR
 
-echo_indent "using the buildpack's setup/compile.lisp, asdf, quicklisp, and save-application"
-$CCL --quiet -l "$BUILDPACK_DIR/setup/compile.lisp" 2>&1 | indent
-echo "-----> Build finished"
+# echo_indent "using the buildpack's setup/compile.lisp, asdf, quicklisp, and save-application"
+# $CCL --quiet -l "$BUILDPACK_DIR/setup/compile.lisp" 2>&1 | indent
+# echo "-----> Build finished"
 
-chmod a+x $BUILD_DIR/lispapp
+# chmod a+x $BUILD_DIR/lispapp
