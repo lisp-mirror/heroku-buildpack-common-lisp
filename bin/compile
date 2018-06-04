@@ -24,7 +24,7 @@ pushd roswell
 sh bootstrap
 ./configure --prefix ~/.local/
 make
-sudo make install
+make install
 export PATH=$PATH:~/.local/bin/
 ros setup
 ros install ccl-bin
