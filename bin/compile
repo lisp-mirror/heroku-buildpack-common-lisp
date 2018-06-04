@@ -32,26 +32,28 @@ fi
 
 CCL_DIR="$CACHE_DIR/ccl"
 export CCL_DEFAULT_DIRECTORY=$CCL_DIR
+CCL=$CCL_DEFAULT_DIRECTORY/lx86cl64
 
 if [ ! -d $CCL_DIR ]; then
     echo "-----> Installing ccl"
     mkdir -p $CCL_DIR  && curl $CCL_PACKAGE -L | tar -xzf - -C $CCL_DIR
     echo_indent 'ccl now installed'
+    $CCL --version 2>&1 | indent
 else
     echo "-----> ccl previously installed"
 fi
 
-#### Disabled
-#### echo "-----> including ccl into the app's slug"
-#### cp -r $CCL_DIR $BUILD_DIR
+# Disabled
+# echo "-----> including ccl into the app's slug"
+# cp -r $CCL_DIR $BUILD_DIR
 
-# echo "-----> create slug's lispapp"
-# export BUILDPACK_DIR
-# export CACHE_DIR
-# export BUILD_DIR
+echo "-----> create slug's lispapp"
+export BUILDPACK_DIR
+export CACHE_DIR
+export BUILD_DIR
 
-# echo_indent "using the buildpack's setup/compile.lisp, asdf, quicklisp, and save-application"
-# $CCL_DEFAULT_DIRECTORY/scripts/ccl64 --quiet -l "$BUILDPACK_DIR/setup/compile.lisp" 2>&1 | indent
-# echo "-----> Build finished"
+echo_indent "using the buildpack's setup/compile.lisp, asdf, quicklisp, and save-application"
+$CCL --quiet -l "$BUILDPACK_DIR/setup/compile.lisp" 2>&1 | indent
+echo "-----> Build finished"
 
-# chmod a+x $BUILD_DIR/lispapp
+chmod a+x $BUILD_DIR/lispapp
