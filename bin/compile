@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 # bin/compile <build-dir> <cache-dir>
 
-CCL_PACKAGE="https://github.com/Clozure/ccl/releases/download/v1.11.5/ccl-1.11.5-linuxx86.tar.gz"
-
 # parse and derive params
 BUILDPACK_DIR=$(cd $(dirname $0); cd ..; pwd) # absolute path of buildpack
 BUILD_DIR=$1
@@ -26,7 +24,7 @@ sh bootstrap
 make
 make install
 export PATH=$PATH:~/.local/bin/
-#ros setup
+ros setup
 ros install ccl-bin
 ros use ccl-bin
 popd
