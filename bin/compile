@@ -35,7 +35,7 @@ export CCL_DEFAULT_DIRECTORY=$CCL_DIR
 
 if [ ! -d $CCL_DIR ]; then
     echo "-----> Installing ccl"
-    mkdir -p $CCL_DIR  && curl $CCL_PACKAGE -s -o -  | tar xzf - -C $CCL_DIR
+    mkdir -p $CCL_DIR  && curl $CCL_PACKAGE -s -o -L -  | tar xzf - -C $CCL_DIR
     echo_indent 'ccl now installed'
 else
     echo "-----> ccl previously installed"
