@@ -38,7 +38,7 @@ if [ ! -d $CCL_DIR ]; then
     echo "-----> Installing ccl"
     mkdir -p $CCL_DIR  && curl $CCL_PACKAGE -s -o -  | tar xzf - -C $CCL_DIR
     echo_indent 'ccl now installed'
-    $CCL_DIR/scripts/ccl64 --version 2&>1 | indent
+    $CCL_DIR/scripts/ccl64 --version 2>&1
 else
     echo "-----> ccl previously installed"
 fi
