@@ -49,7 +49,7 @@ export CACHE_DIR
 export BUILD_DIR
 export CCL_DEFAULT_DIRECTORY=$CCL_DIR
 echo_indent "using the buildpack's setup/compile.lisp, asdf, quicklisp, and save-application"
-$CCL_DEFAULT_DIRECTORY/scripts/ccl64 --quiet -l "$BUILDPACK_DIR/setup/compile.lisp" | indent
+$CCL_DEFAULT_DIRECTORY/scripts/ccl64 --quiet -l "$BUILDPACK_DIR/setup/compile.lisp" 2>&1 | indent
 echo "-----> Build finished"
 
 chmod a+x $BUILD_DIR/lispapp
