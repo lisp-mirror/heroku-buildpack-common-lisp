@@ -38,7 +38,6 @@ if [ ! -d $CCL_DIR ]; then
     echo "-----> Installing ccl"
     mkdir -p $CCL_DIR  && curl $CCL_PACKAGE -s -o -  | tar xzf - -C $CCL_DIR
     echo_indent 'ccl now installed'
-    $CCL_DIR/scripts/ccl64 --quiet --version 2>&1
 else
     echo "-----> ccl previously installed"
 fi
@@ -52,8 +51,8 @@ export BUILDPACK_DIR
 export CACHE_DIR
 export BUILD_DIR
 
-echo_indent "using the buildpack's setup/compile.lisp, asdf, quicklisp, and save-application"
-$CCL_DEFAULT_DIRECTORY/scripts/ccl64 --quiet -l "$BUILDPACK_DIR/setup/compile.lisp" 2>&1 | indent
-echo "-----> Build finished"
+# echo_indent "using the buildpack's setup/compile.lisp, asdf, quicklisp, and save-application"
+# $CCL_DEFAULT_DIRECTORY/scripts/ccl64 --quiet -l "$BUILDPACK_DIR/setup/compile.lisp" 2>&1 | indent
+# echo "-----> Build finished"
 
-chmod a+x $BUILD_DIR/lispapp
+# chmod a+x $BUILD_DIR/lispapp
