@@ -22,9 +22,10 @@ fi
 git clone -b release https://github.com/roswell/roswell.git
 pushd roswell
 sh bootstrap
-./configure
+./configure --prefix ~/.local/
 make
 sudo make install
+export PATH=$PATH:~/.local/bin/
 ros setup
 ros install ccl-bin
 ros use ccl-bin
