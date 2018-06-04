@@ -1,17 +1,6 @@
 #!/usr/bin/env bash
 # bin/compile <build-dir> <cache-dir>
 
-function indent() {
-  c='s/^/       /'
-  case $(uname) in
-    Darwin) sed -l "$c";;
-    *)      sed -u "$c";;
-  esac
-}
-function echo_indent {
-    echo "$*" | indent
-}
-
 CCL_PACKAGE="https://github.com/Clozure/ccl/releases/download/v1.11.5/ccl-1.11.5-linuxx86.tar.gz"
 
 # parse and derive params
@@ -22,38 +11,32 @@ CACHE_DIR=$2
 echo "-----> CCL buildpack 0.1"
 
 echo "-----> start buildpack's compile"
-echo_indent "build_dir: $BUILD_DIR"
-echo_indent "cache_dir: $CACHE_DIR"
+echo "build_dir: $BUILD_DIR"
+echo "cache_dir: $CACHE_DIR"
 
 if [ $RESET_CACHE ]; then
   echo "-----> flushing cache"
   rm -rf $CACHE_DIR/*
 fi
 
-CCL_DIR="$CACHE_DIR/ccl"
-export CCL_DEFAULT_DIRECTORY=$CCL_DIR
-CCL=$CCL_DEFAULT_DIRECTORY/ccl/lx86cl64
-
-if [ ! -d $CCL_DIR ]; then
-    echo "-----> Installing ccl"
-    mkdir -p $CCL_DIR  && curl $CCL_PACKAGE -L | tar -xzf - -C $CCL_DIR
-    echo_indent 'ccl now installed'
-    $CCL --version 2>&1 | indent
-else
-    echo "-----> ccl previously installed"
-fi
-
-# Disabled
-# echo "-----> including ccl into the app's slug"
-# cp -r $CCL_DIR $BUILD_DIR
+git clone -b release https://github.com/roswell/roswell.git
+pushd roswell
+sh bootstrap
+./configure
+make
+sudo make install
+ros setup
+ros install ccl-bin
+ros use ccl-bin
+popd
 
 echo "-----> create slug's lispapp"
 export BUILDPACK_DIR
 export CACHE_DIR
 export BUILD_DIR
 
-# echo_indent "using the buildpack's setup/compile.lisp, asdf, quicklisp, and save-application"
-# $CCL --quiet -l "$BUILDPACK_DIR/setup/compile.lisp" 2>&1 | indent
-# echo "-----> Build finished"
+echo "using the buildpack's setup/compile.lisp, asdf, quicklisp, and save-application"
+ros run --asdf --load "$BUILDPACK_DIR/setup/compile.lisp" --verbose --quit
+echo "-----> Build finished"
 
-# chmod a+x $BUILD_DIR/lispapp
+chmod a+x $BUILD_DIR/lispapp
