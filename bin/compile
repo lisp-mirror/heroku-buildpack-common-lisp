@@ -26,18 +26,18 @@ sh bootstrap
 make
 make install
 export PATH=$PATH:~/.local/bin/
-ros setup
-ros install ccl-bin
-ros use ccl-bin
-popd
+# ros setup
+# ros install ccl-bin
+# ros use ccl-bin
+# popd
 
-echo "-----> create slug's lispapp"
-export BUILDPACK_DIR
-export CACHE_DIR
-export BUILD_DIR
+# echo "-----> create slug's lispapp"
+# export BUILDPACK_DIR
+# export CACHE_DIR
+# export BUILD_DIR
 
-echo "using the buildpack's setup/compile.lisp, asdf, quicklisp, and save-application"
-ros run --asdf --load "$BUILDPACK_DIR/setup/compile.lisp" --verbose --quit
-echo "-----> Build finished"
+# echo "using the buildpack's setup/compile.lisp, asdf, quicklisp, and save-application"
+# ros run --asdf --load "$BUILDPACK_DIR/setup/compile.lisp" --verbose --quit
+# echo "-----> Build finished"
 
-chmod a+x $BUILD_DIR/lispapp
+# chmod a+x $BUILD_DIR/lispapp
