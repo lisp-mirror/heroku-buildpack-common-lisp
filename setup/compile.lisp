@@ -13,19 +13,6 @@
 ;;; Tell ASDF to store binaries in the cache dir.
 (ccl:setenv "XDG_CACHE_HOME" (concatenate 'string (getenv "CACHE_DIR") "/.asdf/"))
 
-; (require :asdf) ;; we want quicklisp to control which asdf we get.
-
-;;; Setup quicklisp (i.e. what is usually done in a user's init file).
-(let ((ql-setup (make-pathname :directory (append *cache-dir* '("quicklisp")) :defaults "setup.lisp")))
-
-  ;; If this is a fresh cache we need to install quicklisp first.
-  (unless (probe-file ql-setup)
-    (load (make-pathname :directory (append *buildpack-dir* '("lib")) :defaults "quicklisp.lisp"))
-    (eval (read-from-string (format nil "(quicklisp-quickstart:install :path ~S)" 
-                                    (make-pathname :directory (pathname-directory ql-setup))))))
-
-  (load ql-setup))
-
 ;;; Notify ASDF that our build and cache dir is an awesomes place to find asf files.
 (asdf:initialize-source-registry `(:source-registry
                                    (:tree ,(make-pathname :directory *build-dir*))
