@@ -12,11 +12,12 @@ function echo_indent {
     echo "$*" | indent
 }
 
+CCL_PACKAGE="https://github.com/Clozure/ccl/releases/download/v1.11.5/ccl-1.11.5-linuxx86.tar.gz"
+
 # parse and derive params
 BUILDPACK_DIR=$(cd $(dirname $0); cd ..; pwd) # absolute path of buildpack
 BUILD_DIR=$1
 CACHE_DIR=$2
-CCL=ccl
 
 echo "-----> CCL buildpack 0.1"
 
@@ -29,13 +30,28 @@ if [ $RESET_CACHE ]; then
   rm -rf $CACHE_DIR/*
 fi
 
-echo "-----> create slug's lispapp"
-export BUILDPACK_DIR
-export CACHE_DIR
-export BUILD_DIR
+CCL_DIR="$CACHE_DIR/ccl"
+export CCL_DEFAULT_DIRECTORY=$CCL_DIR
 
-echo_indent "using the buildpack's setup/compile.lisp, asdf, quicklisp, and save-application"
-$CCL -l "$BUILDPACK_DIR/setup/compile.lisp" 2>&1 | indent
-echo "-----> Build finished"
+if [ ! -d $CCL_DIR ]; then
+    echo "-----> Installing ccl"
+    mkdir -p $CCL_DIR  && curl $CCL_PACKAGE -s -o -  | tar xzf - -C $CCL_DIR
+    echo_indent 'ccl now installed'
+else
+    echo "-----> ccl previously installed"
+fi
 
-chmod a+x $BUILD_DIR/lispapp
+#### Disabled
+#### echo "-----> including ccl into the app's slug"
+#### cp -r $CCL_DIR $BUILD_DIR
+
+# echo "-----> create slug's lispapp"
+# export BUILDPACK_DIR
+# export CACHE_DIR
+# export BUILD_DIR
+
+# echo_indent "using the buildpack's setup/compile.lisp, asdf, quicklisp, and save-application"
+# $CCL_DEFAULT_DIRECTORY/scripts/ccl64 --quiet -l "$BUILDPACK_DIR/setup/compile.lisp" 2>&1 | indent
+# echo "-----> Build finished"
+
+# chmod a+x $BUILD_DIR/lispapp
