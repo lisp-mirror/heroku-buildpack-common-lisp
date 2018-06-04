@@ -32,7 +32,7 @@ fi
 
 CCL_DIR="$CACHE_DIR/ccl"
 export CCL_DEFAULT_DIRECTORY=$CCL_DIR
-CCL=$CCL_DEFAULT_DIRECTORY/lx86cl64
+CCL=$CCL_DEFAULT_DIRECTORY/ccl/lx86cl64
 
 if [ ! -d $CCL_DIR ]; then
     echo "-----> Installing ccl"
