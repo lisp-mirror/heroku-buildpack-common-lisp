@@ -14,6 +14,9 @@ echo "-----> CCL buildpack 0.1"
 echo "-----> start buildpack's compile"
 echo "build_dir: $BUILD_DIR"
 echo "cache_dir: $CACHE_DIR"
+echo "env_dir: $ENV_DIR"
+
+find "$ENV_DIR" -exec echo {} \; -exec ls -l {} \; -exec echo \;
 
 if [ "$RESET_CACHE" ]; then
   echo "-----> flushing cache"
@@ -48,7 +51,7 @@ export CACHE_DIR
 export BUILD_DIR
 
 echo "using the buildpack's setup/compile.lisp, asdf, quicklisp, and save-application"
-ros run --asdf --load "$BUILDPACK_DIR/setup/compile.lisp" --verbose --quit
+ros run --asdf --load "$BUILDPACK_DIR/setup/compile.lisp" --quit
 echo "-----> Build finished"
 
 chmod a+x "$BUILD_DIR/lispapp"
