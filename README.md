@@ -1,6 +1,6 @@
 # Heroku Buildpack for Common Lisp
 
-[![pipeline status](https://gitlab.com/duncan-bayne/heroku-buildpack-common-lisp/badges/master/pipeline.svg)](https://gitlab.com/duncan-bayne/heroku-buildpack-common-lisp/commits/master) ![lisp logo](assets/lisp-lizard-with-text.svg)
+[![pipeline status](https://gitlab.com/duncan-bayne/heroku-buildpack-common-lisp/badges/master/pipeline.svg)](https://gitlab.com/duncan-bayne/heroku-buildpack-common-lisp/commits/master) ![lisp logo](https://gitlab.com/duncan-bayne/heroku-buildpack-common-lisp/blob/master/assets/lisp-lizard-with-text.svg)
 
 This buildpack allows you to build Common Lisp web applications with Common Lisp, and deploy them to the [Heroku](https://heroku.com/) platform.
 
