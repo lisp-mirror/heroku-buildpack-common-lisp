@@ -2,7 +2,10 @@
 # bin/compile <build-dir> <cache-dir>
 
 # parse and derive params
-BUILDPACK_DIR=$("cd $(dirname "$0"); cd ..; pwd") # absolute path of buildpack
+# shellcheck disable=SC2164
+# shellcheck disable=SC2046
+BUILDPACK_DIR=$(cd $(dirname "$0"); cd ..; pwd) # absolute path of buildpack
+
 BUILD_DIR=$1
 CACHE_DIR=$2
 CL_IMPL=${CL_IMPL:-ccl-bin}
