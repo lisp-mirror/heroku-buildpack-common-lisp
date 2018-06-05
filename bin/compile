@@ -18,7 +18,7 @@ if [ "$RESET_CACHE" ]; then
 fi
 
 git clone -b release https://github.com/roswell/roswell.git
-pushd roswell
+pushd roswell || exit
 sh bootstrap
 ./configure --prefix ~/.local/
 make
@@ -27,7 +27,7 @@ export PATH=$PATH:~/.local/bin/
 ros setup
 ros install ccl-bin
 ros use ccl-bin
-popd
+popd || exit
 
 echo "-----> create slug's lispapp"
 export BUILDPACK_DIR

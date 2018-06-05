@@ -15,5 +15,5 @@ hg clone . /tmp/build
 # mkdir /tmp/cache
 # ln -s /misc/repos/ccl /tmp/cache/ccl
 
-cd /tmp/build
+cd /tmp/build || exit
 ~/repos/heroku-buildpack-cl/bin/compile /tmp/build /tmp/cache
