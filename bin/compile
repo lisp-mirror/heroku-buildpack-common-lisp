@@ -1,7 +1,27 @@
 #!/usr/bin/env bash
-# bin/compile <build-dir> <cache-dir>
 
-# parse and derive params
+BUILDPACK_VERSION="0.1.0"
+
+function getenv() {
+    ENV_NAME="$1"
+    DEFAULT="$2"
+    ENV_VAL="$DEFAULT"
+
+    if [ -f "$ENV_DIR/$ENV_NAME" ]; then
+        ENV_VAL=$(cat "$ENV_DIR/$ENV_NAME")
+    fi
+
+    echo "$ENV_VAL"
+}
+
+function info {
+    echo "        $1"
+}
+
+function log {
+    echo "------> $1"
+}
+
 # shellcheck disable=SC2164
 # shellcheck disable=SC2046
 BUILDPACK_DIR=$(cd $(dirname "$0"); cd ..; pwd) # absolute path of buildpack
@@ -10,28 +30,15 @@ BUILD_DIR=$1
 CACHE_DIR=$2
 ENV_DIR=$3
 
-echo "-----> CCL buildpack 0.1"
-
-echo "-----> start buildpack's compile"
-echo "build_dir: $BUILD_DIR"
-echo "cache_dir: $CACHE_DIR"
-echo "env_dir: $ENV_DIR"
-
-find "$ENV_DIR" -exec echo {} \; -exec ls -l {} \; -exec echo \;
+log "-----> Common Lisp buildpack $BUILDPACK_VERSION"
+info "BUILD_DIR: $BUILD_DIR"
+info "CACHE_DIR: $BUILD_DIR"
+info "ENV_DIR: $ENV_DIR"
+info "CL_IMPL: $(getenv CL_IMPL 'ccl-bin')"
 
 if [ "$RESET_CACHE" ]; then
-  echo "-----> flushing cache"
-  rm -rf "${CACHEDIR:?}/"*
-fi
-
-if [ -f "$ENV_DIR/CL_IMPL" ]; then
-    CL_IMPL=$(cat "$ENV_DIR/CL_IMPL")
-else
-    CL_IMPL="ccl-bin"
-fi
-
-if [ ! "$CL_IMPL" ]; then
-    CL_IMPL="ccl-bin"
+    log "flushing cache"
+    rm -rf "${CACHEDIR:?}/"*
 fi
 
 git clone -b release https://github.com/roswell/roswell.git
@@ -46,13 +53,12 @@ ros install "$CL_IMPL"
 ros use "$CL_IMPL"
 popd || exit
 
-echo "-----> create slug's lispapp"
+log "compiling application"
 export BUILDPACK_DIR
 export CACHE_DIR
 export BUILD_DIR
 
-echo "using the buildpack's setup/compile.lisp, asdf, quicklisp, and save-application"
 ros run --asdf --load "$BUILDPACK_DIR/setup/compile.lisp" --quit
-echo "-----> Build finished"
+log "compilation complete"
 
 chmod a+x "$BUILD_DIR/lispapp"
