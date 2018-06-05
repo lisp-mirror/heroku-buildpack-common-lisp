@@ -2,7 +2,7 @@
 # bin/compile <build-dir> <cache-dir>
 
 # parse and derive params
-BUILDPACK_DIR=$(cd $(dirname $0); cd ..; pwd) # absolute path of buildpack
+BUILDPACK_DIR=$("cd $(dirname "$0"); cd ..; pwd") # absolute path of buildpack
 BUILD_DIR=$1
 CACHE_DIR=$2
 
@@ -12,7 +12,7 @@ echo "-----> start buildpack's compile"
 echo "build_dir: $BUILD_DIR"
 echo "cache_dir: $CACHE_DIR"
 
-if [ $RESET_CACHE ]; then
+if [ "$RESET_CACHE" ]; then
   echo "-----> flushing cache"
   rm -rf $CACHE_DIR/*
 fi
@@ -38,4 +38,4 @@ echo "using the buildpack's setup/compile.lisp, asdf, quicklisp, and save-applic
 ros run --asdf --load "$BUILDPACK_DIR/setup/compile.lisp" --verbose --quit
 echo "-----> Build finished"
 
-chmod a+x $BUILD_DIR/lispapp
+chmod a+x "$BUILD_DIR/lispapp"
