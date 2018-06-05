@@ -1,6 +1,6 @@
 # Heroku Buildpack for Common Lisp
 
-[![pipeline status](https://gitlab.com/duncan-bayne/heroku-buildpack-common-lisp/badges/master/pipeline.svg)](https://gitlab.com/duncan-bayne/heroku-buildpack-common-lisp/commits/master)
+[![pipeline status](https://gitlab.com/duncan-bayne/heroku-buildpack-common-lisp/badges/master/pipeline.svg)](https://gitlab.com/duncan-bayne/heroku-buildpack-common-lisp/commits/master) ![lisp logo](assets/lisp-lizard-with-text.svg)
 
 This buildpack allows you to build Common Lisp web applications with Common Lisp, and deploy them to the [Heroku](https://heroku.com/) platform.
 
@@ -32,4 +32,5 @@ The GPL is specifically designed to reduce the usefulness of GPL-licensed code t
 * Heroku and their new [Buildpack-capable stack](http://devcenter.heroku.com/articles/buildpacks).
 * [Zach Beane](https://github.com/xach) for [QuickLisp](http://www.quicklisp.org/) library manager.
 * [Clozure Common Lisp](http://ccl.clozure.com/).
+* [azzamsa](https://github.com/azzamsa) for the [SVG Lisp Logo](https://github.com/azzamsa/lisp-logo), Manfred Spiller for the original design, and [Xah Lee](http://xahlee.info/) for the background.
 * All other countless lispers and developers of all generations who made this possible.
