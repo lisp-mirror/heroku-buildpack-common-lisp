@@ -8,7 +8,6 @@ BUILDPACK_DIR=$(cd $(dirname "$0"); cd ..; pwd) # absolute path of buildpack
 
 BUILD_DIR=$1
 CACHE_DIR=$2
-CL_IMPL=${CL_IMPL:-ccl-bin}
 
 echo "-----> CCL buildpack 0.1"
 
@@ -29,8 +28,8 @@ make
 make install
 export PATH=$PATH:~/.local/bin/
 ros setup
-ros install "$CL_IMPL"
-ros use "$CL_IMPL"
+ros install ccl-bin
+ros use ccl-bin
 popd || exit
 
 echo "-----> create slug's lispapp"
