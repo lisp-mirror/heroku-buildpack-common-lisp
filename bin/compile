@@ -14,7 +14,7 @@ echo "cache_dir: $CACHE_DIR"
 
 if [ "$RESET_CACHE" ]; then
   echo "-----> flushing cache"
-  rm -rf $CACHE_DIR/*
+  rm -rf "${CACHEDIR:?}/"*
 fi
 
 git clone -b release https://github.com/roswell/roswell.git
