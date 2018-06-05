@@ -15,9 +15,9 @@
 
 ;;; Notify ASDF that our build and cache dir is an awesomes place to find asf files.
 (asdf:initialize-source-registry `(:source-registry
-                                   (:tree ,(make-pathname :directory *build-dir*))
-                                   (:tree ,(make-pathname :directory *cache-dir*))
-                                   :inherit-configuration))
+                                    (:tree ,(make-pathname :directory *build-dir*))
+                                    (:tree ,(make-pathname :directory *cache-dir*))
+                                    :inherit-configuration))
 
 ;;; App can redefine this to do runtime initializations
 (defun initialize-application (&key port)
@@ -39,5 +39,5 @@
   ;; note that the buildpack's bin/release refers to this application name.
   (format t "~&* create slug's ./lispapp via save-application")
   (save-application app-file
-		    :prepend-kernel t
-		    :toplevel-function #'heroku-toplevel))
+    :prepend-kernel t
+    :toplevel-function #'heroku-toplevel))

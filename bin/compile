@@ -3,23 +3,23 @@
 BUILDPACK_VERSION="0.1.0"
 
 function getenv() {
-    ENV_NAME="$1"
-    DEFAULT="$2"
-    ENV_VAL="$DEFAULT"
+  ENV_NAME="$1"
+  DEFAULT="$2"
+  ENV_VAL="$DEFAULT"
 
-    if [ -f "$ENV_DIR/$ENV_NAME" ]; then
-        ENV_VAL=$(cat "$ENV_DIR/$ENV_NAME")
-    fi
+  if [ -f "$ENV_DIR/$ENV_NAME" ]; then
+    ENV_VAL=$(cat "$ENV_DIR/$ENV_NAME")
+  fi
 
-    echo "$ENV_VAL"
+  echo "$ENV_VAL"
 }
 
 function info {
-    echo "        $1"
+  echo "        $1"
 }
 
 function log {
-    echo "------> $1"
+  echo "------> $1"
 }
 
 # shellcheck disable=SC2164
@@ -37,8 +37,8 @@ info "ENV_DIR: $ENV_DIR"
 info "CL_IMPL: $(getenv CL_IMPL 'ccl-bin')"
 
 if [ "$RESET_CACHE" ]; then
-    log "flushing cache"
-    rm -rf "${CACHEDIR:?}/"*
+  log "flushing cache"
+  rm -rf "${CACHEDIR:?}/"*
 fi
 
 git clone -b release https://github.com/roswell/roswell.git
