@@ -1,6 +1,7 @@
 image: roswell/debian
 before_script:
-  - apt install shellcheck
+  - apt-get update
+  - apt-get install -y shellcheck
 shellcheck:
   script:
     - ./bin/ci
