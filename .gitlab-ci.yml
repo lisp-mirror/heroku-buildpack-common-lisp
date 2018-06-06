@@ -1,7 +1,7 @@
 image: debian
 before_script:
   - apt-get update
-  - apt-get install -y autoconf build-essential git libcurl-dev shellcheck
+  - apt-get install -y autoconf build-essential git libcurl4-openssl-dev shellcheck
 shellcheck:
   script:
     - ./bin/ci
