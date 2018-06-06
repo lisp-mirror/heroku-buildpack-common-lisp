@@ -11,7 +11,7 @@ testCompile() {
   echo "ls -l ${BUILD_DIR}"
   ls -l "${BUILD_DIR}"
 
-  cp -R "${BUILDPACK_HOME}/fixtures/ccl/*" "${BUILD_DIR}"
+  cp -R "${BUILDPACK_HOME}/../fixtures/ccl/*" "${BUILD_DIR}"
   compile
   assertCapturedSuccess
 }
