@@ -3,7 +3,7 @@
 <!-- TODO: duncan@bayne.id.au: Fix use of postimg once https://gitlab.com/gitlab-org/gitlab-ce/issues/17987 is resolved. -->
 [![pipeline status](https://gitlab.com/duncan-bayne/heroku-buildpack-common-lisp/badges/master/pipeline.svg)](https://gitlab.com/duncan-bayne/heroku-buildpack-common-lisp/commits/master) ![lisp logo](https://s22.postimg.cc/rhfrsvgwh/lisp-lizard-with-text.png)
 
-This buildpack allows you to build Common Lisp web applications with Common Lisp, and deploy them to the [Heroku](https://heroku.com/) platform.
+This buildpack allows you to build web applications with Common Lisp, and deploy them to the [Heroku](https://heroku.com/) platform.
 
 ## development
 
