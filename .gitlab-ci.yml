@@ -1,7 +1,7 @@
 image: debian
 before_script:
   - apt-get update
-  - apt-get install -y build-essential git shellcheck
+  - apt-get install -y autoconf build-essential git shellcheck
 shellcheck:
   script:
     - ./bin/ci
