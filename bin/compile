@@ -29,12 +29,13 @@ BUILDPACK_DIR=$(cd $(dirname "$0"); cd ..; pwd) # absolute path of buildpack
 BUILD_DIR=$1
 CACHE_DIR=$2
 ENV_DIR=$3
+CL_IMPL="$(getenv CL_IMPL 'ccl-bin')"
 
 log "-----> Common Lisp buildpack $BUILDPACK_VERSION"
 info "BUILD_DIR: $BUILD_DIR"
 info "CACHE_DIR: $BUILD_DIR"
 info "ENV_DIR: $ENV_DIR"
-info "CL_IMPL: $(getenv CL_IMPL 'ccl-bin')"
+info "CL_IMPL: $CL_IMPL"
 
 if [ "$RESET_CACHE" ]; then
   log "flushing cache"
