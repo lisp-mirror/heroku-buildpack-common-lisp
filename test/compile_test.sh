@@ -4,7 +4,7 @@
 
 testCompile() {
   ls -lR "$BUILDPACK_HOME"
-  cp -R "${BUILDPACK_HOME}/fixtures/ccl/*" "${BUILD_DIR}"
+  cp -R "${BUILDPACK_HOME}/test/fixtures/ccl/*" "${BUILD_DIR}"
 
   compile
   assertCapturedSuccess
