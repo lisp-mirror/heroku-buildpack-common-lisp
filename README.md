@@ -26,7 +26,7 @@ The GPL is specifically designed to reduce the usefulness of GPL-licensed code t
 
 ## credits
 * [bhyde](https://github.com/bhyde) for [heroku-buildpack-ccl64](https://github.com/bhyde/heroku-buildpack-ccl64).
-* The [author](https://github.com/roswell/roswell#author) and [https://github.com/roswell/roswell#contributors](contributors) of [Roswell](https://github.com/roswell/roswell).
+* The [author](https://github.com/roswell/roswell#author) and [contributors](https://github.com/roswell/roswell#contributors) of [Roswell](https://github.com/roswell/roswell).
 * [Mike Travers](hyperphor.com) for heroku-buildpack-cl2.
 * [Anton Vodonosov](https://github.com/avodonosov) for his fork of heroku-buildpack-cl.
 * [Mike Travers](hyperphor.com) for heroku-buildpack-cl.
