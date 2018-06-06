@@ -5,3 +5,13 @@ set -e
 for subscript in bin/*; do
   shellcheck "$subscript"
 done
+
+git clone https://github.com/heroku/heroku-buildpack-testrunner
+
+# TODO: duncan@bayne.id.au: why is the test runner looking in src?
+git clone https://github.com/kward/shunit2 shunit2/src
+
+SHUNIT_HOME="$(pwd)/shunit2"
+export SHUNIT_HOME
+
+./heroku-buildpack-testrunner/bin/run .
