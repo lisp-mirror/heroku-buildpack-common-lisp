@@ -1,4 +1,4 @@
-image: roswell/debian
+image: debian
 before_script:
   - apt-get update
   - apt-get install -y shellcheck
