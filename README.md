@@ -16,7 +16,7 @@ To start deploying Common Lisp applications to Heroku, you'll need to have:
 
 ### a Heroku account
 
-You can [sign up for Heroku](https://signup.heroku.com/) free of charge; once you've done that, you can proceed to install and configure the development tools.
+You can [sign up for Heroku](https://signup.heroku.com/) free of charge.
 
 ### the Heroku CLI
 
@@ -26,14 +26,12 @@ Heroku has extensive documentation on [installing and configuring the Heroku CLI
 
 These days, the best way of setting up your Common Lisp development environment is [Roswell](https://github.com/roswell/roswell).  If you've used Clojure before, it's analogous to Leiningen.  Rubyists, think rbenv.
 
-For the purposes of this tutorial, you'll need to install Clozure Common Lisp with:
+For the purposes of this tutorial, once you've installed Roswell, you'll need to install Clozure Common Lisp with:
 
 ```
 ros install ccl-bin
 ros use ccl-bin
 ```
-
-Once you've installed Roswell and CCL, you can proceed to cloning a template application to deploy.
 
 ### an application to deploy
 
