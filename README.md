@@ -5,7 +5,54 @@
 
 This buildpack allows you to build web applications with Common Lisp, and deploy them to the [Heroku](https://heroku.com/) platform.
 
-## development
+## tutorial
+
+To start deploying Common Lisp applications to Heroku, you'll need to have:
+
+1. a Heroku account
+2. the Heroku CLI (Command Line Interface)
+3. a Common Lisp development environment
+4. an application to deploy
+
+### a Heroku account
+
+You can [sign up for Heroku](https://signup.heroku.com/) free of charge; once you've done that, you can proceed to install and configure the development tools.
+
+### the Heroku CLI
+
+Heroku has extensive documentation on [installing and configuring the Heroku CLI](https://devcenter.heroku.com/categories/command-line).  Once you're ready, you can set up Common Lisp.
+
+### a Common Lisp development environment
+
+These days, the best way of setting up your Common Lisp development environment is [Roswell](https://github.com/roswell/roswell).  If you've used Clojure before, it's analogous to Leiningen.  Rubyists, think rbenv.
+
+For the purposes of this tutorial, you'll need to install Clozure Common Lisp with:
+
+```
+ros install ccl-bin
+ros use ccl-bin
+```
+
+Once you've installed Roswell and CCL, you can proceed to cloning a template application to deploy.
+
+### an application to deploy
+
+The easiest way of getting started is to clone a template application, create a Heroku app for it, and deploy.
+
+```
+# Clone the sample application.
+git clone git@gitlab.com:duncan-bayne/heroku-app-common-lisp.git
+
+# Create a Heroku app for it, using the heroku-18 stack and this buildpack.
+cd heroku-app-common-lisp
+heroku create -s heroku-18 --buildpack https://gitlab.com/duncan-bayne/heroku-buildpack-common-lisp
+
+# Deploy it.
+git push heroku master
+
+# Open it in a browser.
+heroku open
+```
 
 ### history
 
