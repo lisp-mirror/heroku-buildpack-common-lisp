@@ -4,4 +4,7 @@ before_script:
   - apt-get install -y autoconf build-essential git libcurl4-openssl-dev shellcheck
 shellcheck:
   script:
-    - ./bin/ci
+    - ./bin/ci-shellcheck
+test_buildpack:
+  script:
+    - ./bin/ci-test-buildpack

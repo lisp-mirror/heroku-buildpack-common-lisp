@@ -2,10 +2,6 @@
 
 set -e
 
-for subscript in bin/*; do
-  shellcheck "$subscript"
-done
-
 git clone https://github.com/heroku/heroku-buildpack-testrunner
 
 # TODO: duncan@bayne.id.au: why is the test runner looking in src?
