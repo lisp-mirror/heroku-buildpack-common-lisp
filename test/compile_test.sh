@@ -9,5 +9,9 @@ testCompile() {
   ls -lR "${BUILD_DIR}"
   compile
 
-  ls -l "$BUILD_DIR/lispapp"
+  if [ -f "$BUILD_DIR/lispapp" ]; then
+    LISPAPP_FOUND=1
+  fi
+
+  assertEquals 'lispapp binary was not compiled' 1 "$LISPAPP_FOUND"
 }
