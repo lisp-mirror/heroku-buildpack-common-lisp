@@ -56,7 +56,7 @@ heroku open
 
 ### history
 
-This buildpack is forked and highly modified version of [bhyde](https://github.com/bhyde)'s [heroku-buildpack-ccl64](https://github.com/bhyde/heroku-buildpack-ccl64).
+This buildpack is a forked and highly modified version of [bhyde](https://github.com/bhyde)'s [heroku-buildpack-ccl64](https://github.com/bhyde/heroku-buildpack-ccl64).
 
 ### principles
 
