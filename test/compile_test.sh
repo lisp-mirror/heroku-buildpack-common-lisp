@@ -4,9 +4,7 @@
 . "${BUILDPACK_TEST_RUNNER_HOME}/lib/test_utils.sh"
 
 testCompile() {
-  cp -Rv "${BUILDPACK_HOME}"/test/fixtures/ccl/* "${BUILD_DIR}"
-  echo "BUILD_DIR: $BUILD_DIR"
-  ls -lR "${BUILD_DIR}"
+  cp -R "${BUILDPACK_HOME}"/test/fixtures/ccl/* "${BUILD_DIR}"
   compile
 
   if [ -f "$BUILD_DIR/lispapp" ]; then
