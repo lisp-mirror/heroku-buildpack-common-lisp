@@ -68,9 +68,9 @@ This buildpack is a forked and highly modified version of [bhyde](https://github
 ## FAQ
 
 ### How do I choose a different Common Lisp implementation, like SBCL?
-This buildpack supports any Common Lisp implementation supported by Roswell.  To set the implementation to something other than Clozure Common Lisp, set the `CL_IMPL` setting.
+This buildpack supports any Common Lisp implementation supported by Roswell.  To set the implementation to something other than Clozure Common Lisp, set the `CL_IMPL` setting _on your application_.
 
-For example, to use Steel Bank Common Lisp _on your application_:
+For example, to use Steel Bank Common Lisp:
 
 ```
 cd heroku-app-clozure-common-lisp
