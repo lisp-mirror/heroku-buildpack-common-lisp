@@ -20,7 +20,7 @@ You can [sign up for Heroku](https://signup.heroku.com/) free of charge.
 
 ### the Heroku CLI
 
-Heroku has extensive documentation on [installing and configuring the Heroku CLI](https://devcenter.heroku.com/categories/command-line).  Once you're ready, you can set up Common Lisp.
+Heroku has extensive documentation on [installing and configuring the Heroku CLI](https://devcenter.heroku.com/categories/command-line).
 
 ### a Common Lisp development environment
 
