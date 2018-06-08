@@ -5,6 +5,9 @@
 
 This buildpack allows you to build web applications with Common Lisp, and deploy them to the [Heroku](https://heroku.com/) platform.
 
+<!-- TODO: duncan@bayne.id.au: Fix use of postimg once https://gitlab.com/gitlab-org/gitlab-ce/issues/17987 is resolved. -->
+[![webapp screenshot](https://s33.postimg.cc/nqliwvlnz/Screen_Shot_2018-06-08_at_12.18.28.png)]
+
 ## tutorial
 
 To start deploying Common Lisp applications to Heroku, you'll need to have:
