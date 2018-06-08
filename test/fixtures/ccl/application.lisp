@@ -18,4 +18,4 @@
     (hunchentoot:stop *acceptor*))
 
   (setf *acceptor*
-    (hunchentoot:start (make-instance 'hunchentoot:easy-acceptor :port port))))
+    (hunchentoot:start (make-instance 'hunchentoot:easy-acceptor :port port)))
