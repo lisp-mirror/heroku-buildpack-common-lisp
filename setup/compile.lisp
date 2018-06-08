@@ -13,7 +13,7 @@
 ;;; Tell ASDF to store binaries in the cache dir.
 (ccl:setenv "XDG_CACHE_HOME" (concatenate 'string (getenv "CACHE_DIR") "/.asdf/"))
 
-;;; Notify ASDF that our build and cache dir is an awesomes place to find asf files.
+;;; Notify ASDF that our build and cache dir is an awesome place to find asf files.
 (asdf:initialize-source-registry `(:source-registry
                                     (:tree ,(make-pathname :directory *build-dir*))
                                     (:tree ,(make-pathname :directory *cache-dir*))
