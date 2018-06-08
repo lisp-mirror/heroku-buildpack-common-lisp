@@ -39,10 +39,10 @@ The easiest way of getting started is to clone a template application, create a 
 
 ```
 # Clone the sample application.
-git clone git@gitlab.com:duncan-bayne/heroku-app-common-lisp.git
+git clone git@gitlab.com:duncan-bayne/heroku-app-clozure-common-lisp.git
 
 # Create a Heroku app for it, using the heroku-18 stack and this buildpack.
-cd heroku-app-common-lisp
+cd heroku-app-clozure-common-lisp
 heroku create -s heroku-18 --buildpack https://gitlab.com/duncan-bayne/heroku-buildpack-common-lisp
 
 # Deploy it.
