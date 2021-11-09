@@ -24,6 +24,7 @@ function log {
 
 # shellcheck disable=SC2164
 # shellcheck disable=SC2046
+# shellcheck disable=SC2103
 BUILDPACK_DIR=$(cd $(dirname "$0"); cd ..; pwd) # absolute path of buildpack
 
 BUILD_DIR=$1
